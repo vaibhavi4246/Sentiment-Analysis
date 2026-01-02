@@ -1,19 +1,8 @@
 import streamlit as st
+import torch
+from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
 import re
 import os
-
-# Try importing with helpful error messages
-try:
-    import torch
-except ImportError as e:
-    st.error("⚠️ PyTorch not found. Installing dependencies...")
-    st.stop()
-
-try:
-    from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
-except ImportError as e:
-    st.error("⚠️ Transformers library not found. Please check requirements.txt")
-    st.stop()
 
 # Page configuration
 st.set_page_config(
