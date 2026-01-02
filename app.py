@@ -43,16 +43,24 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     """Load the trained model and tokenizer"""
-    model_name = 'distilbert-base-uncased'
-    tokenizer = DistilBertTokenizer.from_pretrained(model_name)
-    model = DistilBertForSequenceClassification.from_pretrained(model_name, num_labels=2)
+    import os
     
-    # Try to load fine-tuned model if it exists
+    # Try to load fine-tuned model first
+    model_path = 'outputs/models/distilbert-sentiment'
+    
     try:
-        model.load_state_dict(torch.load('sentiment_model.pth', map_location=torch.device('cpu')))
-        st.sidebar.success(" Fine-tuned model loaded")
-    except:
-        st.sidebar.warning(" Using base model (not fine-tuned)")
+        if os.path.exists(model_path):
+            # Load fine-tuned model from outputs directory
+            tokenizer = DistilBertTokenizer.from_pretrained(model_path)
+            model = DistilBertForSequenceClassification.from_pretrained(model_path)
+            st.sidebar.success("✅ Fine-tuned model loaded")
+        else:
+            raise FileNotFoundError("Fine-tuned model not found")
+    except Exception as e:
+        # Fallback to base model
+        st.sidebar.warning(f"⚠️ Using base model (fine-tuned model not found)")
+        tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+        model = DistilBertForSequenceClassification.from_pretrained('distilbert-base-uncased', num_labels=2)
     
     model.eval()
     return tokenizer, model
