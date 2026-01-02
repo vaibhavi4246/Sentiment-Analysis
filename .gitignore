@@ -1,0 +1,103 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
+
+# Virtual Environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Dataset files (can be large)
+data/
+*.csv
+*.json
+*.txt
+*.tsv
+
+# Model checkpoints (keep only final model)
+outputs/models/*/checkpoint-*/
+*.pt
+*.pth
+*.bin
+# Keep safetensors in final model but ignore in checkpoints
+outputs/models/*/checkpoint-*/*.safetensors
+
+# Training logs and temporary outputs
+logs/
+runs/
+wandb/
+.wandb/
+tensorboard/
+
+# Large output files (optional - comment out if you want to track these)
+# outputs/visualizations/
+# outputs/*.json
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Testing
+.pytest_cache/
+.coverage
+.hypothesis/
+
+# Cache directories
+.cache/
+__pypackages__/
+*.pyc
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Backup files
+*.bak
+*.backup
+*.orig
