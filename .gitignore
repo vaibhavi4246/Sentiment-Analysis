@@ -40,8 +40,11 @@ venv.bak/
 data/
 *.csv
 *.json
-*.txt
+data/*.txt
 *.tsv
+
+# Important: Don't ignore requirements.txt
+!requirements.txt
 
 # Model checkpoints (keep only final model)
 outputs/models/*/checkpoint-*/
